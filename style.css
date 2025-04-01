@@ -1,195 +1,196 @@
+
 /* Общие стили */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    font-family: 'Arial', sans-serif; /* Шрифт для всего текста на странице */
+    margin: 0; /* Убираем внешние отступы */
+    padding: 0; /* Убираем внутренние отступы */
+    background-color: #f9f9f9; /* Цвет фона тела страницы */
+    color: #333; /* Основной цвет текста */
 }
 
 header {
-    background-color: #750091;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+    background-color: #9E11B8; /* Цвет фона заголовка */
+    color: #fff; /* Цвет текста в заголовке */
+    padding: 20px 0; /* Отступы внутри заголовка */
+    text-align: center; /* Выравнивание текста по центру */
 }
 
 nav a {
-    color: #fff;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
+    color: #fff; /* Цвет ссылок в навигационной панели */
+    margin: 0 15px; /* Отступы между ссылками */
+    text-decoration: none; /* Убираем подчёркивание ссылок */
+    font-weight: bold; /* Жирный шрифт для ссылок */
 }
 
-nav a:hover {
-    color: #DCB4E6;
-}
+    nav a:hover {
+        color: #DCB4E6; /* Изменение цвета ссылок при наведении курсора */
+    }
 
 main {
-    padding: 40px 20px;
+    padding: 40px 20px; /* Отступы внутри основного содержимого */
 }
 
 /* Стили для форм */
 form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Максимальная ширина формы */
+    margin: 0 auto; /* Центрирование формы на странице */
+    padding: 20px; /* Внутренние отступы формы */
+    background-color: #DCB4E6; /* Цвет фона формы */
+    border-radius: 10px; /* Скругление углов формы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень вокруг формы */
 }
 
-form div {
-    margin-bottom: 20px;
-}
+    form div {
+        margin-bottom: 20px; /* Отступы между элементами формы */
+    }
 
-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
+    form label {
+        display: block; /* Отображение меток в блоке */
+        font-weight: bold; /* Жирный шрифт для меток */
+        margin-bottom: 5px; /* Отступы под метками */
+    }
 
-form input, form textarea, form select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    box-sizing: border-box;
-}
+    form input, form textarea, form select {
+        width: 100%; /* Ширина полей ввода на 100% ширины контейнера */
+        padding: 10px; /* Внутренние отступы полей ввода */
+        border: 1px solid #ddd; /* Граница полей ввода */
+        border-radius: 5px; /* Скругление углов полей ввода */
+        font-size: 1rem; /* Размер шрифта в полях ввода */
+        box-sizing: border-box; /* Учёт границ и отступов в общей ширине и высоте */
+    }
 
-form input[type="submit"] {
-    background-color: #DCB4E6;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        form input[type="submit"] {
+            background-color: #DCB4E6; /* Цвет фона кнопки отправки */
+            color: #fff; /* Цвет текста на кнопке отправки */
+            border: none; /* Убираем границу кнопки */
+            padding: 10px 20px; /* Внутренние отступы кнопки */
+            font-size: 1.1rem; /* Размер шрифта на кнопке */
+            border-radius: 5px; /* Скругление углов кнопки */
+            cursor: pointer; /* Изменение курсора при наведении на кнопку */
+            transition: background-color 0.3s ease; /* Плавное изменение цвета фона при наведении */
+        }
 
-form input[type="submit"]:hover {
-    background-color: #9E11B8;
-}
+            form input[type="submit"]:hover {
+                background-color: #DCB4E6; /* Цвет фона кнопки при наведении */
+            }
 
 /* Стили для уведомлений */
 .alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 15px; /* Внутренние отступы уведомлений */
+    margin-bottom: 20px; /* Отступы под уведомлениями */
+    border-radius: 5px; /* Скругление углов уведомлений */
+    font-size: 1rem; /* Размер шрифта в уведомлениях */
 }
 
 .alert-success {
-    background-color: #dff0d8;
-    color: #3c763d;
-    border: 1px solid #d6e9c6;
+    background-color: #dff0d8; /* Цвет фона успешного уведомления */
+    color: #3c763d; /* Цвет текста успешного уведомления */
+    border: 1px solid #d6e9c6; /* Граница успешного уведомления */
 }
 
 .alert-danger {
-    background-color: #f2dede;
-    color: #a94442;
-    border: 1px solid #ebccd1;
+    background-color: #f2dede; /* Цвет фона уведомления об ошибке */
+    color: #a94442; /* Цвет текста уведомления об ошибке */
+    border: 1px solid #ebccd1; /* Граница уведомления об ошибке */
 }
 
 /* Стили для главной страницы */
 .hero {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: #1abc9c;
-    color: #fff;
-    border-radius: 10px;
-    margin-bottom: 40px;
+    text-align: center; /* Выравнивание текста по центру в секции героя */
+    padding: 60px 20px; /* Внутренние отступы секции героя */
+    background-color: #DCB4E6; /* Цвет фона секции героя */
+    color: #fff; /* Цвет текста в секции героя */
+    border-radius: 10px; /* Скругление углов секции героя */
+    margin-bottom: 40px; /* Отступы под секцией героя */
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
+    .hero h1 {
+        font-size: 3rem; /* Размер шрифта заголовка в секции героя */
+        margin-bottom: 20px; /* Отступы под заголовком в секции героя */
+    }
 
-.hero .subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-}
+    .hero .subtitle {
+        font-size: 1.5rem; /* Размер шрифта подзаголовка в секции героя */
+        margin-bottom: 30px; /* Отступы под подзаголовком в секции героя */
+    }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-}
+    .hero p {
+        font-size: 1.2rem; /* Размер шрифта параграфа в секции героя */
+        margin-bottom: 40px; /* Отступы под параграфом в секции героя */
+    }
 
 .cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    display: flex; /* Гибкое расположение кнопок призыва к действию */
+    justify-content: center; /* Центрирование кнопок по горизонтали */
+    gap: 20px; /* Расстояние между кнопками */
 }
 
 .btn {
-    padding: 15px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
+    padding: 15px 30px; /* Внутренние отступы кнопок */
+    border-radius: 5px; /* Скругление углов кнопок */
+    text-decoration: none; /* Убираем подчёркивание кнопок */
+    font-size: 1.1rem; /* Размер шрифта на кнопках */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета фона кнопок при наведении */
 }
 
 .btn-primary {
-    background-color: #3498db;
-    color: #fff;
+    background-color: #750091; /* Цвет фона основной кнопки */
+    color: #fff; /* Цвет текста на основной кнопке */
 }
 
-.btn-primary:hover {
-    background-color: #2980b9;
-}
+    .btn-primary:hover {
+        background-color: #9E11B8; /* Цвет фона основной кнопки при наведении */
+    }
 
 .btn-secondary {
-    background-color: #34495e;
-    color: #fff;
+    background-color: #750091; /* Цвет фона дополнительной кнопки */
+    color: #fff; /* Цвет текста на дополнительной кнопке */
 }
 
-.btn-secondary:hover {
-    background-color: #2c3e50;
-}
+    .btn-secondary:hover {
+        background-color: #9E11B8; /* Цвет фона дополнительной кнопки при наведении */
+    }
 
 .features {
-    text-align: center;
-    padding: 40px 20px;
+    text-align: center; /* Выравнивание текста по центру в секции особенностей */
+    padding: 40px 20px; /* Внутренние отступы секции особенностей */
 }
 
-.features h2 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-}
+    .features h2 {
+        font-size: 2.5rem; /* Размер шрифта заголовка в секции особенностей */
+        margin-bottom: 40px; /* Отступы под заголовком в секции особенностей */
+    }
 
 .feature-list {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
+    display: flex; /* Гибкое расположение списка особенностей */
+    justify-content: space-around; /* Распределение пространства между элементами списка */
+    gap: 20px; /* Расстояние между элементами списка */
 }
 
 .feature-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    background-color: #fff; /* Цвет фона элемента списка особенностей */
+    padding: 20px; /* Внутренние отступы элемента списка */
+    border-radius: 10px; /* Скругление углов элемента списка */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень вокруг элемента списка */
+    width: 30%; /* Ширина элемента списка */
 }
 
-.feature-item h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
+    .feature-item h3 {
+        font-size: 1.8rem; /* Размер шрифта заголовка элемента списка */
+        margin-bottom: 15px; /* Отступы под заголовком элемента списка */
+    }
 
-.feature-item p {
-    font-size: 1.1rem;
-    color: #666;
-}
+    .feature-item p {
+        font-size: 1.1rem; /* Размер шрифта текста элемента списка */
+        color: #666; /* Цвет текста элемента списка */
+    }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #2c3e50;
-    color: #fff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 20px; /* Внутренние отступы блока футера */
+    background-color: #9E11B8; /* Цвет фона футера */
+    color: #fff; /* Цвет текста в футере */
+    position: fixed; /* Закрепление блока футера на странице */
+    bottom: 0; /* Положение блока футера у нижнего края окна браузера */
+    width: 100%; /* Ширина блока футера на всю ширину окна браузера */
 }
