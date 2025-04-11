@@ -1,43 +1,46 @@
-{% extends "base.html" %}
-{% block content %}
-    <h1>История форм</h1>
-    <a href="{{ url_for('create_form') }}">Создать новую форму</a>
-    <form method="POST" action="{{ url_for('set_currency') }}">
-        <select name="selected_currency">
-            <option value="USD">USD - Доллар США</option>
-            <option value="EUR">EUR - Евро</option>
-            <option value="RUB">RUB - Российский рубль</option>
-            <option value="GBP">GBP - Фунт стерлингов</option>
-            <option value="JPY">JPY - Японская йена</option>
+{% extends "base.html" %}  {# Расширяем базовый шаблон "base.html" #}
+{% block content %}  {# Начинаем блок контента, который будет заменять соответствующий блок в базовом шаблоне #}
+    <h1>История форм</h1>  {# Заголовок страницы #}
+    <a href="{{ url_for('create_form') }}">Создать новую форму</a>  {# Ссылка на страницу создания новой формы #}
+
+    <form method="POST" action="{{ url_for('set_currency') }}">  {# Форма для выбора валюты #}
+        <select name="selected_currency">  {# Выпадающий список для выбора валюты #}
+            <option value="USD">USD - Доллар США</option>  {# Опция для доллара США #}
+            <option value="EUR">EUR - Евро</option>  {# Опция для евро #}
+            <option value="RUB">RUB - Российский рубль</option>  {# Опция для российского рубля #}
+            <option value="GBP">GBP - Фунт стерлингов</option>  {# Опция для фунта стерлингов #}
+            <option value="JPY">JPY - Японская йена</option>  {# Опция для японской йены #}
         </select>
-        <input type="submit" value="Выбрать валюту">
+        <input type="submit" value="Выбрать валюту">  {# Кнопка отправки формы #}
     </form>
-    <h2>Ваши отправленные формы</h2>
-    {% if forms %}
-        <ul>
-            {% for form in forms %}
-                <li>
-                    <p><strong>Аэропорт вылета:</strong> {{ form.departure_icao }} - {{ airports|selectattr('icao', 'equalto', form.departure_icao)|map(attribute='name')|first }}</p>
-                    <p><strong>Аэропорт прилета:</strong> {{ form.arrival_icao }} - {{ airports|selectattr('icao', 'equalto', form.arrival_icao)|map(attribute='name')|first }}</p>
-                    <p><strong>Промежуточные точки:</strong> {{ form.intermediate_points }}</p>
-                    <p><strong>Время отправления (локальное):</strong> {{ form.departure_time_local }} ({{ form.departure_timezone }})</p>
-                    <p><strong>Время прибытия (локальное):</strong> {{ form.arrival_time_local }} ({{ form.arrival_timezone }})</p>
-                    <p><strong>Время отправления (UTC):</strong> {{ convert_time(form.departure_time_local, form.departure_timezone, 'UTC') }}</p>
-                    <p><strong>Время прибытия (UTC):</strong> {{ convert_time(form.arrival_time_local, form.arrival_timezone, 'UTC') }}</p>
-                    <p><strong>Номер рейса:</strong> {{ form.flight_number }}</p>
-                    <p><strong>Название гостиницы:</strong> {{ form.hotel_name }}</p>
+
+    <h2>Ваши отправленные формы</h2>  {# Заголовок для списка отправленных форм #}
+
+    {% if forms %}  {# Проверяем, есть ли отправленные формы #}
+        <ul>  {# Начинаем ненумерованный список #}
+            {% for form in forms %}  {# Перебираем каждую форму в списке #}
+                <li>  {# Элемент списка для каждой формы #}
+                    <p><strong>Аэропорт вылета:</strong> {{ form.departure_icao }} - {{ airports|selectattr('icao', 'equalto', form.departure_icao)|map(attribute='name')|first }}</p>  {# Выводим информацию о аэропорте вылета #}
+                    <p><strong>Аэропорт прилета:</strong> {{ form.arrival_icao }} - {{ airports|selectattr('icao', 'equalto', form.arrival_icao)|map(attribute='name')|first }}</p>  {# Выводим информацию о аэропорте прилета #}
+                    <p><strong>Промежуточные точки:</strong> {{ form.intermediate_points }}</p>  {# Выводим промежуточные точки #}
+                    <p><strong>Время отправления (локальное):</strong> {{ form.departure_time_local }} ({{ form.departure_timezone }})</p>  {# Выводим локальное время отправления #}
+                    <p><strong>Время прибытия (локальное):</strong> {{ form.arrival_time_local }} ({{ form.arrival_timezone }})</p>  {# Выводим локальное время прибытия #}
+                    <p><strong>Время отправления (UTC):</strong> {{ convert_time(form.departure_time_local, form.departure_timezone, 'UTC') }}</p>  {# Конвертируем и выводим время отправления в формате UTC #}
+                    <p><strong>Время прибытия (UTC):</strong> {{ convert_time(form.arrival_time_local, form.arrival_timezone, 'UTC') }}</p>  {# Конвертируем и выводим время прибытия в формате UTC #}
+                    <p><strong>Номер рейса:</strong> {{ form.flight_number }}</p>  {# Выводим номер рейса #}
+                    <p><strong>Название гостиницы:</strong> {{ form.hotel_name }}</p>  {# Выводим название гостиницы #}
                     <p><strong>Стоимость:</strong>
-                        {{ form.cost }} {{ form.currency }}
-                        ({{ convert_currency(form.cost, form.currency, selected_currency) }} {{ selected_currency }})
+                        {{ form.cost }} {{ form.currency }}  {# Выводим стоимость и валюту #}
+                        ({{ convert_currency(form.cost, form.currency, selected_currency) }} {{ selected_currency }})  {# Конвертируем стоимость в выбранную валюту и выводим #}
                     </p>
-                    <form action="{{ url_for('delete_form', form_id=form.id) }}" method="POST">
-                        <input type="submit" value="Удалить">
+                    <form action="{{ url_for('delete_form', form_id=form.id) }}" method="POST">  {# Форма для удаления конкретной формы #}
+                        <input type="submit" value="Удалить">  {# Кнопка для удаления формы #}
                     </form>
-                    <hr>
+                    <hr>  {# Горизонтальная линия для разделения форм #}
                 </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>У вас пока нет отправленных форм.</p>
-    {% endif %}
-{% endblock %}
+            {% endfor %}  {# Конец цикла по формам #}
+        </ul>  {# Конец ненумерованного списка #}
+    {% else %}  {# Если форм нет #}
+        <p>У Вас пока нет отправленных форм.</p>  {# Сообщение о том, что форм нет #}
+    {% endif %}  {# Конец проверки наличия форм #}
+{% endblock %}  {# Конец блока контента #}

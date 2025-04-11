@@ -1,38 +1,45 @@
-{% extends "base.html" %}
-{% block content %}
-    <h1>Регистрация</h1>
-    <form method="POST">
-        {{ form.hidden_tag() }}
+{% extends "base.html" %}  <!-- Расширяем базовый шаблон "base.html" -->
+
+{% block content %}  <!-- Начинаем блок контента, который будет заменять соответствующий блок в базовом шаблоне -->
+    <h1>Регистрация</h1>  <!-- Заголовок страницы -->
+
+    <form method="POST">  <!-- Начинаем форму с методом POST для отправки данных на сервер -->
+        {{ form.hidden_tag() }}  <!-- Вставляем скрытое поле для защиты от CSRF атак -->
+
         <div>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
-            {% for error in form.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+            {{ form.username.label }}<br>  <!-- Отображаем метку для поля имени пользователя -->
+            {{ form.username(size=32) }}  <!-- Поле ввода для имени пользователя с ограничением по размеру -->
+            {% for error in form.username.errors %}  <!-- Проверяем наличие ошибок в поле имени пользователя -->
+                <span style="color: red;">[{{ error }}]</span>  <!-- Если есть ошибки, отображаем их красным цветом -->
             {% endfor %}
         </div>
+
         <div>
-            {{ form.email.label }}<br>
-            {{ form.email(size=32) }}
-            {% for error in form.email.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+            {{ form.email.label }}<br>  <!-- Метка для поля электронной почты -->
+            {{ form.email(size=32) }}  <!-- Поле ввода для электронной почты с ограничением по размеру -->
+            {% for error in form.email.errors %}  <!-- Проверяем наличие ошибок в поле электронной почты -->
+                <span style="color: red;">[{{ error }}]</span>  <!-- Отображаем ошибки, если они есть -->
             {% endfor %}
         </div>
+
         <div>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-            {% for error in form.password.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+            {{ form.password.label }}<br>  <!-- Метка для поля пароля -->
+            {{ form.password(size=32) }}  <!-- Поле ввода для пароля с ограничением по размеру -->
+            {% for error in form.password.errors %}  <!-- Проверяем наличие ошибок в поле пароля -->
+                <span style="color: red;">[{{ error }}]</span>  <!-- Отображаем ошибки, если они есть -->
             {% endfor %}
         </div>
+
         <div>
-            {{ form.confirm_password.label }}<br>
-            {{ form.confirm_password(size=32) }}
-            {% for error in form.confirm_password.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+            {{ form.confirm_password.label }}<br>  <!-- Метка для поля подтверждения пароля -->
+            {{ form.confirm_password(size=32) }}  <!-- Поле ввода для подтверждения пароля с ограничением по размеру -->
+            {% for error in form.confirm_password.errors %}  <!-- Проверяем наличие ошибок в поле подтверждения пароля -->
+                <span style="color: red;">[{{ error }}]</span>  <!-- Отображаем ошибки, если они есть -->
             {% endfor %}
         </div>
+
         <div>
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class="btn btn-primary") }}  <!-- Кнопка отправки формы с классом для стилизации -->
         </div>
-    </form>
-{% endblock %}
+    </form>  <!-- Завершаем форму -->
+{% endblock %}  <!-- Завершаем блок контента -->
