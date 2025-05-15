@@ -18,7 +18,7 @@ Python Flask SQLite HTML5 CSS3
 [Figma](https://www.figma.com/design/gRoHqLeDupp6WDbgvQ3Yrx/FAI?t=DbBHf71RhbaD89Zw-1)
 
 ## Участники проекта:
-  - Рязанкина Александра - _Frontend Developer & & Designer & Team Lead_
+  - Рязанкина Александра - _Frontend Developer & Designer & Team Lead_
   - Езопов Никита - _Frontend Developer & Designer_
   - Нгуен Шон - _Backend Developer_
   - Пекин Семён - _Backend Developer_
