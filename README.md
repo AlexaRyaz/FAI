@@ -12,14 +12,14 @@ Fufelshmerts Avia Incorporated - веб-приложение планирова�
 - 💲 __Расчет итоговой стоимости в выбранной валюте__: Возможность выбора расчетной валюты для всего путешествия и конкретных пунктов списка.
 
 ### Технологический стек
-Python Flask SQLite HTML5 CSS3 JavaScript
+Python Flask SQLite HTML5 CSS3
 
 ### Ссылки на ресурсы
 [Figma](https://www.figma.com/design/gRoHqLeDupp6WDbgvQ3Yrx/FAI?t=DbBHf71RhbaD89Zw-1)
 
 ## Участники проекта:
-  - Рязанкина Александра - _Frontend Developer & Team Lead_
-  - Езопов Никита - _Frontend Developer_
+  - Рязанкина Александра - _Frontend Developer & & Designer & Team Lead_
+  - Езопов Никита - _Frontend Developer & Designer_
   - Нгуен Шон - _Backend Developer_
   - Пекин Семён - _Backend Developer_
 
