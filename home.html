@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="hero">
-        <h1>Добро пожаловать в Travel Planner!</h1>
-        <p class="subtitle">Ваш надежный помощник в планировании путешествий.</p>
-        <p>Создавайте маршруты, сохраняйте информацию о рейсах, отелях и многом другом. Путешествуйте с комфортом и уверенностью!</p>
+        <div class="hero-text">
+            <h1>FAI</h1>
+            <p class="main-description">Ваш надежный помощник в планировании путешествий.</p>
+            <p class="additional-info">Создавайте маршруты, сохраняйте информацию о рейсах, отелях и многом другом. Путешествуйте с комфортом и уверенностью!</p>
+        </div>
         <div class="cta-buttons">
-            <a href="{{ url_for('register') }}" class="btn btn-primary">Зарегистрироваться</a>
-            <a href="{{ url_for('login') }}" class="btn btn-secondary">Войти</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Личный кабинет</a>
+                <a href="{{ url_for('create_form') }}" class="btn btn-secondary">Создать форму</a>
+            {% else %}
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Регистрация</a>
+                <a href="{{ url_for('login') }}" class="btn btn-secondary">Вход</a>
+            {% endif %}
+
         </div>
     </div>
     <div class="features">

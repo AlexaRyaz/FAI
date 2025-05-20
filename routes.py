@@ -3,14 +3,14 @@ from app import app, db
 from app.forms import RegistrationForm, LoginForm, TravelFormForm
 from app.models import User, TravelForm
 from flask_login import login_user, current_user, logout_user, login_required
-from app.utils import convert_currency, calculate_total_cost, get_timezone, convert_time
+from app.utils import convert_currency, calculate_total_cost, convert_time
 from app.airports import airports
-import pytz
-from datetime import datetime
+
 
 @app.route('/')
 def home():
     return render_template('home.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -25,6 +25,7 @@ def register():
         flash('Ваш аккаунт успешно создан! Теперь вы можете войти.', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Регистрация', form=form)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -41,16 +42,21 @@ def login():
             flash('Ошибка входа. Проверьте email и пароль.', 'danger')
     return render_template('login.html', title='Вход', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('home'))
 
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
     forms = TravelForm.query.filter_by(user_id=current_user.id).all()
-    selected_currency = request.args.get('currency', 'USD')  # По умолчанию USD
+    selected_currency = request.args.get('currency', 'USD')
+
+    airport_name_map = {airport['icao']: airport['name'] for airport in airports}
+
     return render_template(
         'dashboard.html',
         title='Личный кабинет',
@@ -58,8 +64,10 @@ def dashboard():
         selected_currency=selected_currency,
         convert_currency=convert_currency,
         calculate_total_cost=calculate_total_cost,
-        convert_time=convert_time  # Передаем функцию конвертации времени
+        convert_time=convert_time,
+        airport_name_map=airport_name_map
     )
+
 
 @app.route('/create_form', methods=['GET', 'POST'])
 @login_required
@@ -83,9 +91,9 @@ def create_form():
             arrival_icao=form.arrival_icao.data,
             intermediate_points=form.intermediate_points.data,
             departure_time_local=departure_time_local,  # Сохраняем время в локальной временной зоне
-            arrival_time_local=arrival_time_local,      # Сохраняем время в локальной временной зоне
-            departure_timezone=departure_timezone,      # Временная зона отправления
-            arrival_timezone=arrival_timezone,          # Временная зона прибытия
+            arrival_time_local=arrival_time_local,  # Сохраняем время в локальной временной зоне
+            departure_timezone=departure_timezone,  # Временная зона отправления
+            arrival_timezone=arrival_timezone,  # Временная зона прибытия
             flight_number=form.flight_number.data,
             hotel_name=form.hotel_name.data,
             cost=form.cost.data,
@@ -98,6 +106,7 @@ def create_form():
         return redirect(url_for('dashboard'))
     return render_template('create_form.html', title='Создать форму', form=form)
 
+
 @app.route('/delete_form/<int:form_id>', methods=['POST'])
 @login_required
 def delete_form(form_id):
@@ -108,6 +117,7 @@ def delete_form(form_id):
     db.session.commit()
     flash('Ваша форма успешно удалена!', 'success')
     return redirect(url_for('dashboard'))
+
 
 @app.route('/set_currency', methods=['POST'])
 @login_required

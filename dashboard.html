@@ -1,46 +1,58 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Личный кабинет</h1>
-    <a href="{{ url_for('create_form') }}">Создать новую форму</a>
-    <form method="POST" action="{{ url_for('set_currency') }}">
-        <select name="selected_currency">
-            <option value="USD">USD - Доллар США</option>
-            <option value="EUR">EUR - Евро</option>
-            <option value="RUB">RUB - Российский рубль</option>
-            <option value="GBP">GBP - Фунт стерлингов</option>
-            <option value="JPY">JPY - Японская йена</option>
-        </select>
-        <input type="submit" value="Выбрать валюту">
-    </form>
-    <h2>Ваши формы</h2>
-    {% if forms %}
-        <ul>
-            {% for form in forms %}
-                <li>
-                    <p><strong>Аэропорт вылета:</strong> {{ form.departure_icao }} - {{ airports|selectattr('icao', 'equalto', form.departure_icao)|map(attribute='name')|first }}</p>
-                    <p><strong>Аэропорт прилета:</strong> {{ form.arrival_icao }} - {{ airports|selectattr('icao', 'equalto', form.arrival_icao)|map(attribute='name')|first }}</p>
-                    <p><strong>Промежуточные точки:</strong> {{ form.intermediate_points }}</p>
-                    <p><strong>Время отправления (локальное):</strong> {{ form.departure_time_local }} ({{ form.departure_timezone }})</p>
-                    <p><strong>Время прибытия (локальное):</strong> {{ form.arrival_time_local }} ({{ form.arrival_timezone }})</p>
-                    <p><strong>Время отправления (UTC):</strong> {{ convert_time(form.departure_time_local, form.departure_timezone, 'UTC') }}</p>
-                    <p><strong>Время прибытия (UTC):</strong> {{ convert_time(form.arrival_time_local, form.arrival_timezone, 'UTC') }}</p>
-                    <p><strong>Номер рейса:</strong> {{ form.flight_number }}</p>
-                    <p><strong>Название гостиницы:</strong> {{ form.hotel_name }}</p>
-                    <p><strong>Стоимость:</strong>
-                        {{ form.cost }} {{ form.currency }}
-                        ({{ convert_currency(form.cost, form.currency, selected_currency) }} {{ selected_currency }})
-                    </p>
-                    <form action="{{ url_for('delete_form', form_id=form.id) }}" method="POST">
-                        <input type="submit" value="Удалить">
-                    </form>
-                    <hr>
-                </li>
-            {% endfor %}
-        </ul>
-        <p><strong>Итоговая стоимость:</strong>
-            {{ calculate_total_cost(forms, selected_currency) }} {{ selected_currency }}
-        </p>
-    {% else %}
-        <p>У вас пока нет отправленных форм.</p>
-    {% endif %}
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Личный кабинет</h1>
+            <p class="main-description">Здесь находятся формы с вашими путешествиями</p>
+            <p class="additional-info">Также вы можете выбрать валюту для подсчета стоимости всех путешествий</p>
+        </div>
+        <div class="cta-buttons">
+            <a href="{{ url_for('create_form') }}" class="btn create-btn">Создать новую форму</a>
+        </div>
+    </div>
+    <div class="currency-choice">
+        <h2>Выберите основную валюту</h2>
+        <div class="currency-set">
+            <form method="POST" action="{{ url_for('set_currency') }}">
+                <select name="selected_currency">
+                    <option value="USD">USD - Доллар США</option>
+                    <option value="EUR">EUR - Евро</option>
+                    <option value="RUB">RUB - Российский рубль</option>
+                    <option value="GBP">GBP - Фунт стерлингов</option>
+                    <option value="JPY">JPY - Японская йена</option>
+                </select>
+                <input type="submit" value="Выбрать валюту">
+            </form>
+        </div>
+    </div>
+    <div class="ur-forms">
+        <h2>Ваши формы</h2>
+        {% if forms %}
+            <ul>
+                {% for form in forms %}
+                    <li>
+                        <p>Аэропорт вылета: {{ airport_name_map.get(form.departure_icao, form.departure_icao) }}</p>
+                        <p>Аэропорт прилета: {{ airport_name_map.get(form.arrival_icao, form.arrival_icao) }}</p>
+                        <p>Промежуточные точки: {{ form.intermediate_points }}</p>
+                        <p>Время отправления (локальное): {{ form.departure_time_local }} ({{ form.departure_timezone }})</p>
+                        <p>Время прибытия (локальное): {{ form.arrival_time_local }} ({{ form.arrival_timezone }})</p>
+                        <p>Время отправления (UTC): {{ convert_time(form.departure_time_local, form.departure_timezone, 'UTC') }}</p>
+                        <p>Время прибытия (UTC): {{ convert_time(form.arrival_time_local, form.arrival_timezone, 'UTC') }}</p>
+                        <p>Номер рейса: {{ form.flight_number }}</p>
+                        <p>Название гостиницы: {{ form.hotel_name }}</p>
+                        <p>Стоимость:
+                            {{ form.cost or 0 }} {{ form.currency }}
+                                ({{ convert_currency(form.cost, form.currency, selected_currency) }} {{ selected_currency }})
+                        </p>
+                        <form action="{{ url_for('delete_form', form_id=form.id) }}" method="POST" class="delete">
+                            <input type="submit" value="Удалить">
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>Итоговая стоимость: {{ calculate_total_cost(forms, selected_currency) }} {{ selected_currency }}</p>
+        {% else %}
+            <p>У Вас пока нет отправленных форм.</p>
+        {% endif %}
+    </div>
 {% endblock %}

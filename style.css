@@ -1,196 +1,517 @@
+@font-face {
+    font-family: 'Tektur';
+    src: url('fonts/Tektur-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
-/* Общие стили */
+@font-face {
+    font-family: 'Tektur';
+    src: url('fonts/Tektur-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tektur';
+    src: url('fonts/Tektur-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tektur';
+    src: url('fonts/Tektur-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tektur';
+    src: url('fonts/Tektur-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tektur';
+    src: url('fonts/Tektur-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: 'Tektur', sans-serif;
+}
+
 body {
-    font-family: 'Arial', sans-serif; /* Шрифт для всего текста на странице */
-    margin: 0; /* Убираем внешние отступы */
-    padding: 0; /* Убираем внутренние отступы */
-    background-color: #f9f9f9; /* Цвет фона тела страницы */
-    color: #333; /* Основной цвет текста */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
 }
 
 header {
-    background-color: #9E11B8; /* Цвет фона заголовка */
-    color: #fff; /* Цвет текста в заголовке */
-    padding: 20px 0; /* Отступы внутри заголовка */
-    text-align: center; /* Выравнивание текста по центру */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: #9E11B8;
+    padding: 5px 0;
+    text-decoration: none;
+    top: 0;
+}
+
+.icon {
+    margin-left: 100px;
+    width: auto;
+    height: auto;
+    background-size: cover;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.05);
+}
+
+nav {
+    display: flex;
+    gap: 50px;
+    margin-right: 100px;
+    font-size: 18px;
 }
 
 nav a {
-    color: #fff; /* Цвет ссылок в навигационной панели */
-    margin: 0 15px; /* Отступы между ссылками */
-    text-decoration: none; /* Убираем подчёркивание ссылок */
-    font-weight: bold; /* Жирный шрифт для ссылок */
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-    nav a:hover {
-        color: #DCB4E6; /* Изменение цвета ссылок при наведении курсора */
-    }
+nav a:hover {
+    transform: scale(1.02);
+    opacity: 0.8;
+}
+
+footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding: 5px 0;
+    bottom: 0;
+    background-color: #9E11B8;
+}
+
+footer p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-about {
+    margin-left: 100px;
+}
+
+.footer-connect {
+    margin-right: 100px;
+}
 
 main {
-    padding: 40px 20px; /* Отступы внутри основного содержимого */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 100px;
 }
 
-/* Стили для форм */
-form {
-    max-width: 500px; /* Максимальная ширина формы */
-    margin: 0 auto; /* Центрирование формы на странице */
-    padding: 20px; /* Внутренние отступы формы */
-    background-color: #DCB4E6; /* Цвет фона формы */
-    border-radius: 10px; /* Скругление углов формы */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень вокруг формы */
-}
-
-    form div {
-        margin-bottom: 20px; /* Отступы между элементами формы */
-    }
-
-    form label {
-        display: block; /* Отображение меток в блоке */
-        font-weight: bold; /* Жирный шрифт для меток */
-        margin-bottom: 5px; /* Отступы под метками */
-    }
-
-    form input, form textarea, form select {
-        width: 100%; /* Ширина полей ввода на 100% ширины контейнера */
-        padding: 10px; /* Внутренние отступы полей ввода */
-        border: 1px solid #ddd; /* Граница полей ввода */
-        border-radius: 5px; /* Скругление углов полей ввода */
-        font-size: 1rem; /* Размер шрифта в полях ввода */
-        box-sizing: border-box; /* Учёт границ и отступов в общей ширине и высоте */
-    }
-
-        form input[type="submit"] {
-            background-color: #DCB4E6; /* Цвет фона кнопки отправки */
-            color: #fff; /* Цвет текста на кнопке отправки */
-            border: none; /* Убираем границу кнопки */
-            padding: 10px 20px; /* Внутренние отступы кнопки */
-            font-size: 1.1rem; /* Размер шрифта на кнопке */
-            border-radius: 5px; /* Скругление углов кнопки */
-            cursor: pointer; /* Изменение курсора при наведении на кнопку */
-            transition: background-color 0.3s ease; /* Плавное изменение цвета фона при наведении */
-        }
-
-            form input[type="submit"]:hover {
-                background-color: #DCB4E6; /* Цвет фона кнопки при наведении */
-            }
-
-/* Стили для уведомлений */
-.alert {
-    padding: 15px; /* Внутренние отступы уведомлений */
-    margin-bottom: 20px; /* Отступы под уведомлениями */
-    border-radius: 5px; /* Скругление углов уведомлений */
-    font-size: 1rem; /* Размер шрифта в уведомлениях */
-}
-
-.alert-success {
-    background-color: #dff0d8; /* Цвет фона успешного уведомления */
-    color: #3c763d; /* Цвет текста успешного уведомления */
-    border: 1px solid #d6e9c6; /* Граница успешного уведомления */
-}
-
-.alert-danger {
-    background-color: #f2dede; /* Цвет фона уведомления об ошибке */
-    color: #a94442; /* Цвет текста уведомления об ошибке */
-    border: 1px solid #ebccd1; /* Граница уведомления об ошибке */
-}
-
-/* Стили для главной страницы */
 .hero {
-    text-align: center; /* Выравнивание текста по центру в секции героя */
-    padding: 60px 20px; /* Внутренние отступы секции героя */
-    background-color: #DCB4E6; /* Цвет фона секции героя */
-    color: #fff; /* Цвет текста в секции героя */
-    border-radius: 10px; /* Скругление углов секции героя */
-    margin-bottom: 40px; /* Отступы под секцией героя */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #DD9FED;
+    border-radius: 44px;
+    width: 100%;
+    height: auto;
+    color: #fff;
+    opacity: 0;
+    animation: anim1 2s ease-out forwards;
 }
 
-    .hero h1 {
-        font-size: 3rem; /* Размер шрифта заголовка в секции героя */
-        margin-bottom: 20px; /* Отступы под заголовком в секции героя */
-    }
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 36px;
+    animation: anim2 2.5s ease forwards;
+}
 
-    .hero .subtitle {
-        font-size: 1.5rem; /* Размер шрифта подзаголовка в секции героя */
-        margin-bottom: 30px; /* Отступы под подзаголовком в секции героя */
-    }
+.hero-text h1 {
+    font-size: 64px;
+}
 
-    .hero p {
-        font-size: 1.2rem; /* Размер шрифта параграфа в секции героя */
-        margin-bottom: 40px; /* Отступы под параграфом в секции героя */
-    }
+.main-description {
+    margin-top: 17px;
+    font-size: 36px;
+}
+
+.additional-info {
+    margin-top: 52px;
+    font-size: 18px;
+}
 
 .cta-buttons {
-    display: flex; /* Гибкое расположение кнопок призыва к действию */
-    justify-content: center; /* Центрирование кнопок по горизонтали */
-    gap: 20px; /* Расстояние между кнопками */
+    display: flex;
+    justify-content: space-between;
+    gap: 107px;
+    margin-top: 28px;
+    margin-bottom: 56px;
+    animation: anim2 2.5s ease forwards;
 }
 
 .btn {
-    padding: 15px 30px; /* Внутренние отступы кнопок */
-    border-radius: 5px; /* Скругление углов кнопок */
-    text-decoration: none; /* Убираем подчёркивание кнопок */
-    font-size: 1.1rem; /* Размер шрифта на кнопках */
-    transition: background-color 0.3s ease; /* Плавное изменение цвета фона кнопок при наведении */
+    background-color: #750091;
+    width: auto;
+    height: auto;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 40px;
+    border-radius: 12px;
+    font-size: 30px;
+    font-weight: 500;
+    transform: scale(1);
+    transition: transform 0.3s ease;
 }
 
-.btn-primary {
-    background-color: #750091; /* Цвет фона основной кнопки */
-    color: #fff; /* Цвет текста на основной кнопке */
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #9700BB;
 }
-
-    .btn-primary:hover {
-        background-color: #9E11B8; /* Цвет фона основной кнопки при наведении */
-    }
-
-.btn-secondary {
-    background-color: #750091; /* Цвет фона дополнительной кнопки */
-    color: #fff; /* Цвет текста на дополнительной кнопке */
-}
-
-    .btn-secondary:hover {
-        background-color: #9E11B8; /* Цвет фона дополнительной кнопки при наведении */
-    }
 
 .features {
-    text-align: center; /* Выравнивание текста по центру в секции особенностей */
-    padding: 40px 20px; /* Внутренние отступы секции особенностей */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: anim2 2s ease forwards;
 }
 
-    .features h2 {
-        font-size: 2.5rem; /* Размер шрифта заголовка в секции особенностей */
-        margin-bottom: 40px; /* Отступы под заголовком в секции особенностей */
-    }
+.features h2 {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 32px;
+    animation: anim2 4s ease forwards;
+}
 
 .feature-list {
-    display: flex; /* Гибкое расположение списка особенностей */
-    justify-content: space-around; /* Распределение пространства между элементами списка */
-    gap: 20px; /* Расстояние между элементами списка */
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    margin-top: 28px;
+    width: 100%;
 }
 
 .feature-item {
-    background-color: #fff; /* Цвет фона элемента списка особенностей */
-    padding: 20px; /* Внутренние отступы элемента списка */
-    border-radius: 10px; /* Скругление углов элемента списка */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень вокруг элемента списка */
-    width: 30%; /* Ширина элемента списка */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #EAEAEA;
+    width: 30%;
+    height: 200px;
+    border-radius: 44px;
+    padding: 20px 40px;
+    opacity: 0;
+    animation: anim1 2s ease-out forwards;
 }
 
-    .feature-item h3 {
-        font-size: 1.8rem; /* Размер шрифта заголовка элемента списка */
-        margin-bottom: 15px; /* Отступы под заголовком элемента списка */
+.feature-item h3 {
+    font-weight: 500;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+.feature-item p {
+    margin: auto 0;
+    font-size: 18px;
+}
+
+.hero-ent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    width: auto;
+    height: auto;
+    background-color: #DD9FED;
+    padding: 30px;
+    border-radius: 44px;
+}
+
+.hero-ent h1 {
+    margin-bottom: 40px;
+}
+
+.hero-ent form {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+}
+
+input#submit.btn.btn-primary {
+    margin-top: 10px;
+    height: auto;
+    width: auto;
+    background-color: #750091;
+}
+
+input#submit.btn.btn-primary:hover {
+    background-color: #9700BB;
+}
+
+.hero-ent form input {
+    width: 620px;
+    height: 25px;
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    background-color: #EAEAEA;
+}
+
+.alert {
+    width: auto;
+    height: auto;
+    background-color: #FF0101;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+    .alert:hover {
+        transform: scale(1.05);
     }
 
-    .feature-item p {
-        font-size: 1.1rem; /* Размер шрифта текста элемента списка */
-        color: #666; /* Цвет текста элемента списка */
-    }
+.alert-success {
+    background-color: #51FF00;
+}
 
-footer {
-    text-align: center; /* Выравнивание текста по центру */
-    padding: 20px; /* Внутренние отступы блока футера */
-    background-color: #9E11B8; /* Цвет фона футера */
-    color: #fff; /* Цвет текста в футере */
-    position: fixed; /* Закрепление блока футера на странице */
-    bottom: 0; /* Положение блока футера у нижнего края окна браузера */
-    width: 100%; /* Ширина блока футера на всю ширину окна браузера */
+.currency-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+    animation: anim1 2s ease-out forwards;
+}
+
+.currency-choice h2 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.currency-set {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #DD9FED;
+    width: auto;
+    height: auto;
+    padding: 38px 83px;
+    margin-bottom: 41px;
+    border-radius: 44px;
+}
+
+.currency-set form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.currency-set select {
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    border-radius: 20px;
+}
+
+.currency-set input {
+    height: auto;
+    padding: 15px 0;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    background-color: #750091;
+    color: #fff;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.currency-set input:hover {
+    transform: scale(1.05);
+    background-color: #9700BB;
+}
+
+.ur-forms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.ur-forms h2 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.ur-forms p {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.ur-forms ul p {
+    font-size: 24px;
+}
+
+.ur-forms ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: auto;
+    height: auto;
+    border-radius: 22px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #DD9FED;
+    color: #fff;
+    gap: 5px;
+}
+
+.ur-forms form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: auto;
+}
+
+.ur-forms input {
+    width: auto;
+    height: auto;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #750091;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 20px;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.ur-forms input:hover {
+    transform: scale(1.05);
+    background-color: #9700BB;
+}
+
+.create-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #DD9FED;
+    color: #fff;
+    width: auto;
+    height: auto;
+    border-radius: 44px;
+    padding: 20px 40px;
+}
+
+.create-content h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.create-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.create-content form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+form select,
+form input {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 12px;
+}
+
+form textarea {
+    width: 100%;
+    height: auto;
+    padding: 5px 0;
+    border-radius: 12px;
+}
+
+form select,
+form input,
+form textarea {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+form input#departure_time.form-control,
+form input#arrival_time.form-control {
+    text-align: center;
+    width: 50%;
+    height: auto;
+    padding: 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+@keyframes anim1 {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes anim2 {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
 }
