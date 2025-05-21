@@ -49,6 +49,6 @@ Python | Flask | SQLite | HTML5 | CSS3
 ## Участники проекта:
   - Рязанкина Александра - _Frontend Developer & Designer & Team Lead_
   - Езопов Никита - _Frontend Developer & Designer_
-  - Нгуен Шон - _Backend Developer_
-  - Пекин Семён - _Backend Developer_
+  - Нгуен Шон - _Backend Developer & Analyst_
+  - Пекин Семён - _Backend Developer & Tester_
 
