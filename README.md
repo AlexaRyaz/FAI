@@ -37,12 +37,12 @@ _Расчет итоговой стоимости в выбранной валю
 - 💲 __Расчет итоговой стоимости в выбранной валюте__: Возможность выбора расчетной валюты для всего путешествия и конкретных пунктов списка.
 
 ### Технологический стек
-Python Flask SQLite HTML5 CSS3
+Python | Flask | SQLite | HTML5 | CSS3
 
 ### Ссылки на ресурсы
-[Figma](https://www.figma.com/design/gRoHqLeDupp6WDbgvQ3Yrx/FAI?t=DbBHf71RhbaD89Zw-1)
-[Презентация](https://www.figma.com/slides/wDZaNnmqhVw6CxXCFS1MJg/FAI-view?node-id=1-1985&t=OcOIw9RlqCBKv1uU-1)
-[Yougile](https://ru.yougile.com/team/9afc33d5d7f0/FAI#FAI-13)
+[Figma](https://www.figma.com/design/gRoHqLeDupp6WDbgvQ3Yrx/FAI?t=DbBHf71RhbaD89Zw-1) | 
+[Презентация](https://www.figma.com/slides/wDZaNnmqhVw6CxXCFS1MJg/FAI-view?node-id=1-1985&t=OcOIw9RlqCBKv1uU-1) | 
+[Yougile](https://ru.yougile.com/team/9afc33d5d7f0/FAI#FAI-13) | 
 
 ---
 
