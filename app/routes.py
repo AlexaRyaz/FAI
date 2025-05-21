@@ -3,15 +3,17 @@ from app import app, db
 from app.forms import RegistrationForm, LoginForm, TravelFormForm
 from app.models import User, TravelForm
 from flask_login import login_user, current_user, logout_user, login_required
-from app.utils import convert_currency, calculate_total_cost, convert_time
+from app.utils import convert_currency, calculate_total_cost, get_timezone, convert_time
 from app.airports import airports
+import pytz
+from datetime import datetime
 
 
 @app.route('/')
 def home():
     return render_template('home.html')
 
-
+ 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -48,7 +50,7 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-
+  
 @app.route('/dashboard')
 @login_required
 def dashboard():
@@ -56,7 +58,6 @@ def dashboard():
     selected_currency = request.args.get('currency', 'USD')
 
     airport_name_map = {airport['icao']: airport['name'] for airport in airports}
-
     return render_template(
         'dashboard.html',
         title='Личный кабинет',
