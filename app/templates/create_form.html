@@ -1,83 +1,75 @@
-{% extends "base.html" %}  {# Расширяет базовый шаблон "base.html" #}
-{% block content %}  {# Начало блока контента, который будет заменен в базовом шаблоне #}
-    <h1>Создать новую форму</h1>  {# Заголовок страницы #}
-    <form method="POST">  {# Начало формы, метод POST используется для отправки данных на сервер #}
-        {{ form.hidden_tag() }}  {# Генерирует скрытое поле для защиты от CSRF-атак #}
-
-        <div>
-            {{ form.departure_icao.label }}<br>  {# Отображает метку для поля отправления #}
-            {{ form.departure_icao(class="form-control") }}  {# Отображает поле ввода для ICAO кода отправления #}
-            {% for error in form.departure_icao.errors %}  {# Перебирает ошибки валидации для поля отправления #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображает ошибки валидации #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.arrival_icao.label }}<br>  {# Метка для поля прибытия #}
-            {{ form.arrival_icao(class="form-control") }}  {# Поле ввода для ICAO кода прибытия #}
-            {% for error in form.arrival_icao.errors %}  {# Ошибки валидации для поля прибытия #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.intermediate_points.label }}<br>  {# Метка для промежуточных точек #}
-            {{ form.intermediate_points(class="form-control") }}  {# Поле ввода для промежуточных точек #}
-            {% for error in form.intermediate_points.errors %}  {# Ошибки для промежуточных точек #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.departure_time.label }}<br>  {# Метка для времени отправления #}
-            {{ form.departure_time(class="form-control", placeholder="HH:MM") }}  {# Поле ввода для времени отправления с плейсхолдером #}
-            {% for error in form.departure_time.errors %}  {# Ошибки для времени отправления #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.arrival_time.label }}<br>  {# Метка для времени прибытия #}
-            {{ form.arrival_time(class="form-control", placeholder="HH:MM") }}  {# Поле ввода для времени прибытия #}
-            {% for error in form.arrival_time.errors %}  {# Ошибки для времени прибытия #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.flight_number.label }}<br>  {# Метка для номера рейса #}
-            {{ form.flight_number(class="form-control") }}  {# Поле ввода для номера рейса #}
-            {% for error in form.flight_number.errors %}  {# Ошибки для номера рейса #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.hotel_name.label }}<br>  {# Метка для названия отеля #}
-            {{ form.hotel_name(class="form-control") }}  {# Поле ввода для названия отеля #}
-            {% for error in form.hotel_name.errors %}  {# Ошибки для названия отеля #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.cost.label }}<br>  {# Метка для стоимости #}
-            {{ form.cost(class="form-control") }}  {# Поле ввода для стоимости #}
-            {% for error in form.cost.errors %}  {# Ошибки для стоимости #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.currency.label }}<br>  {# Метка для валюты #}
-            {{ form.currency(class="form-control") }}  {# Поле ввода для валюты #}
-            {% for error in form.currency.errors %}  {# Ошибки для валюты #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок #}
-            {% endfor %}
-        </div>
-
-        <div>
-            {{ form.submit(class="btn btn-primary") }}  {# Кнопка отправки формы #}
-        </div>
-    </form>
-{% endblock %}  {# Конец блока контента #}
+{% extends "base.html" %}
+{% block content %}
+    <div class="create-content">
+        <h1>Создать новую форму</h1>
+        <form method="POST" class="create">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.departure_icao.label }}
+                {{ form.departure_icao(class="form-control") }}
+                {% for error in form.departure_icao.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.arrival_icao.label }}
+                {{ form.arrival_icao(class="form-control") }}
+                {% for error in form.arrival_icao.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.intermediate_points.label }}
+                {{ form.intermediate_points(class="form-control") }}
+                {% for error in form.intermediate_points.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.departure_time.label }}
+                {{ form.departure_time(class="form-control", placeholder="HH:MM") }}
+                {% for error in form.departure_time.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.arrival_time.label }}
+                {{ form.arrival_time(class="form-control", placeholder="HH:MM") }}
+                {% for error in form.arrival_time.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.flight_number.label }}
+                {{ form.flight_number(class="form-control") }}
+                {% for error in form.flight_number.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.hotel_name.label }}
+                {{ form.hotel_name(class="form-control") }}
+                {% for error in form.hotel_name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.cost.label }}
+                {{ form.cost(class="form-control") }}
+                {% for error in form.cost.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.currency.label }}
+                {{ form.currency(class="form-control") }}
+                {% for error in form.currency.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

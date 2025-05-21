@@ -1,24 +1,20 @@
-{% extends "base.html" %}  {# Указывает, что данный шаблон наследует базовый шаблон "base.html" #}
-{% block content %}  {# Начало блока контента, который будет вставлен в базовый шаблон #}
-    <h1>Вход</h1>  {# Заголовок страницы #}
-    <form method="POST">  {# Начало формы, которая будет отправлена методом POST #}
-        {{ form.hidden_tag() }}  {# Вставка скрытого поля для защиты от CSRF атак #}
-        <div>
-            {{ form.email.label }}<br>  {# Отображение метки для поля ввода электронной почты #}
-            {{ form.email(size=32) }}  {# Поле ввода для электронной почты с ограничением по размеру #}
-            {% for error in form.email.errors %}  {# Проверка на наличие ошибок в поле email #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок, если они есть #}
-            {% endfor %}
-        </div>
-        <div>
-            {{ form.password.label }}<br>  {# Отображение метки для поля ввода пароля #}
-            {{ form.password(size=32) }}  {# Поле ввода для пароля с ограничением по размеру #}
-            {% for error in form.password.errors %}  {# Проверка на наличие ошибок в поле пароля #}
-                <span style="color: red;">[{{ error }}]</span>  {# Отображение ошибок, если они есть #}
-            {% endfor %}
-        </div>
-        <div>
-            {{ form.submit(class="btn btn-primary") }}  {# Кнопка отправки формы с классом для стилизации #}
-        </div>
-    </form>
-{% endblock %}  {# Конец блока контента #}
+{% extends "base.html" %}
+{% block content %}
+    <div class="hero-ent">
+        <h1>Вход</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+                <p>Почта (email)</p>
+                {{ form.email }}
+                {% for error in form.email.errors %}
+                    <span style="color: red;">[{{error}}]</span>
+                {% endfor %}
+                <p>Пароль</p>
+                {{ form.password }}
+                {% for error in form.password.errors %}
+                    <span style="color: red;">[{{error}}]</span>
+                {% endfor %}
+                {{ form.submit(class="btn btn-primary") }}
+        </form>
+    </div>
+{% endblock %}

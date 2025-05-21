@@ -2,24 +2,27 @@ import requests
 from datetime import datetime
 import pytz
 
+
 def convert_time(time_str, from_tz, to_tz):
     if not time_str or not from_tz or not to_tz:
         return time_str
 
     try:
-        # Преобразуем строку времени в объект datetime
-        time_obj = datetime.strptime(time_str, '%H:%M')
-        # Устанавливаем исходную временную зону
+        # Добавим фиктивную дату, чтобы pytz не сдвигал минуты
+        dt_naive = datetime.strptime(time_str, '%H:%M')
+        dt_with_date = datetime(2000, 1, 1, dt_naive.hour, dt_naive.minute)
+
         from_zone = pytz.timezone(from_tz)
-        time_obj = from_zone.localize(time_obj)
-        # Конвертируем в целевую временную зону
         to_zone = pytz.timezone(to_tz)
-        time_obj = time_obj.astimezone(to_zone)
-        # Возвращаем время в формате 'HH:MM'
-        return time_obj.strftime('%H:%M')
+
+        dt_from = from_zone.localize(dt_with_date)
+        dt_to = dt_from.astimezone(to_zone)
+
+        return dt_to.strftime('%H:%M')
     except Exception as e:
         print(f"Ошибка конвертации времени: {e}")
         return time_str
+
 
 def get_exchange_rates(base_currency="USD"):
     url = f"https://api.exchangerate-api.com/v4/latest/{base_currency}"
@@ -29,11 +32,15 @@ def get_exchange_rates(base_currency="USD"):
     else:
         return None
 
+
 def convert_currency(amount, from_currency, to_currency):
+    if amount is None:
+        return 0
     rates = get_exchange_rates(base_currency=from_currency)
     if rates and to_currency in rates:
         return amount * rates[to_currency]
-    return None
+    return 0
+
 
 def get_timezone(city, api_key):
     url = f"http://api.timezonedb.com/v2.1/get-time-zone"
@@ -48,13 +55,13 @@ def get_timezone(city, api_key):
         return response.json().get('zoneName')
     return None
 
-def calculate_total_cost(forms, base_currency):
+
+def calculate_total_cost(forms, selected_currency):
     total_cost = 0
     for form in forms:
-        if form.currency != base_currency:
-            converted_cost = convert_currency(form.cost, form.currency, base_currency)
-            if converted_cost:
-                total_cost += converted_cost
-        else:
-            total_cost += form.cost
+        if form.cost is None:
+            continue
+        converted = convert_currency(form.cost, form.currency, selected_currency)
+        if converted is not None:
+            total_cost += converted
     return round(total_cost, 2)

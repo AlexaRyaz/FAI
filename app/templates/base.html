@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Установка кодировки страницы -->
     <meta charset="UTF-8">
-    <!-- Установка адаптивного мета-тега для корректного отображения на мобильных устройствах -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel App</title>
-    <!-- Подключение файла стилей из статической папки приложения -->
+    <title>FAI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/16x16.png">
 </head>
 <body>
     <header>
+        <div class="icon">
+            <a href="{{ url_for('home') }}">
+                <img src="/static/icon.svg">
+            </a>
+        </div>
         <nav>
-            <!-- Ссылка на главную страницу -->
             <a href="{{ url_for('home') }}">Главная</a>
             {% if current_user.is_authenticated %}
-                <!-- Если пользователь аутентифицирован, отображаем ссылки на личный кабинет и создание формы -->
                 <a href="{{ url_for('dashboard') }}">Личный кабинет</a>
                 <a href="{{ url_for('create_form') }}">Создать форму</a>
                 <a href="{{ url_for('logout') }}">Выйти</a>
             {% else %}
-                <!-- Если пользователь не аутентифицирован, отображаем ссылки для входа и регистрации -->
                 <a href="{{ url_for('login') }}">Вход</a>
                 <a href="{{ url_for('register') }}">Регистрация</a>
             {% endif %}
@@ -29,7 +31,6 @@
     <main>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
-                <!-- Если есть сообщения, отображаем их в виде уведомлений -->
                 {% for category, message in messages %}
                     <div class="alert alert-{{ category }}">
                         {{ message }}
@@ -37,12 +38,11 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <!-- Блок для контента, который будет заменен в дочерних шаблонах -->
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <!-- Контактная информация -->
-        <p>Свяжитесь с нами: <a href="mailto:podmai@mail.ru">podmai@mail.ru</a></p>
+        <p class="footer-about">© 2025 FAI. Все права защищены.</p>
+        <p class="footer-connect">Свяжитесь с нами: <a href="mailto:podmai@mail.ru">podmai@mail.ru</a></p>
     </footer>
 </body>
 </html>
