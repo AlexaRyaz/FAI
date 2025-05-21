@@ -50,34 +50,34 @@ Python | Flask | SQLite | HTML5 | CSS3
 Для установки и запуска проекта выполните следующие шаги:
 
 1. Клонирование проекта:
-      '''python
+   '''
    git clone https://github.com/AlexaRyaz/FAI
    '''
    
 3. Создание окружения:
-      '''python
+   '''
    python -m venv .venv
    '''
    
    Активируйте её:
    - Для Windows:
-     '''python
+     '''
           .venv\Scripts\activate
      '''
    - Для macOS/Linux:
-     '''python
+     '''
           source .venv/bin/activate
      '''
      
 4. Установка зависимостей:
    Перейдите в папку app и установите необходимые библиотеки:
-   '''python
+   '''
       pip install -r requirements.txt
    '''
 
 5. Запуск проекта:
    Перейдите в папку instance и запустите файл run.py:
-   '''python
+   '''
       python run.py
    '''
    
