@@ -1,3 +1,4 @@
+/* Определение шрифта Tektur с различными начертаниями */
 @font-face {
     font-family: 'Tektur';
     src: url('fonts/Tektur-Regular.woff') format('woff');
@@ -40,6 +41,7 @@
     font-style: normal;
 }
 
+/* Сброс стандартных стилей для всех элементов */
 * {
     margin: 0;
     padding: 0;
@@ -47,6 +49,7 @@
     font-family: 'Tektur', sans-serif;
 }
 
+/* Основные стили для body */
 body {
     display: flex;
     flex-direction: column;
@@ -57,6 +60,7 @@ body {
     background-color: #f9f9f9;
 }
 
+/* Стили для шапки сайта */
 header {
     display: flex;
     justify-content: space-between;
@@ -69,6 +73,7 @@ header {
     top: 0;
 }
 
+/* Стили для логотипа/иконки */
 .icon {
     margin-left: 100px;
     width: auto;
@@ -82,6 +87,7 @@ header {
     transform: scale(1.05);
 }
 
+/* Стили для навигационного меню */
 nav {
     display: flex;
     gap: 50px;
@@ -105,6 +111,7 @@ nav a:hover {
     opacity: 0.8;
 }
 
+/* Стили для подвала сайта */
 footer {
     position: relative;
     display: flex;
@@ -131,6 +138,7 @@ footer p {
     margin-right: 100px;
 }
 
+/* Основное содержимое страницы */
 main {
     flex: 1;
     display: flex;
@@ -139,6 +147,7 @@ main {
     padding: 20px 100px;
 }
 
+/* Стили для основного блока */
 .hero {
     display: flex;
     flex-direction: column;
@@ -174,6 +183,7 @@ main {
     font-size: 18px;
 }
 
+/* Стили для кнопок призыва к действию */
 .cta-buttons {
     display: flex;
     justify-content: space-between;
@@ -202,6 +212,7 @@ main {
     background-color: #9700BB;
 }
 
+/* Стили для блока с карточками */
 .features {
     display: flex;
     flex-direction: column;
@@ -222,6 +233,8 @@ main {
     gap: 50px;
     margin-top: 28px;
     width: 100%;
+    opacity: 0;
+    animation: anim1 2s ease-out forwards;
 }
 
 .feature-item {
@@ -234,8 +247,14 @@ main {
     height: 200px;
     border-radius: 44px;
     padding: 20px 40px;
-    opacity: 0;
-    animation: anim1 2s ease-out forwards;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .feature-item h3 {
@@ -249,6 +268,7 @@ main {
     font-size: 18px;
 }
 
+/* Стили для формы входа */
 .hero-ent {
     display: flex;
     flex-direction: column;
@@ -292,6 +312,7 @@ input#submit.btn.btn-primary:hover {
     background-color: #EAEAEA;
 }
 
+/* Стили для уведомлений */
 .alert {
     width: auto;
     height: auto;
@@ -304,14 +325,15 @@ input#submit.btn.btn-primary:hover {
     transition: transform 0.3s ease;
 }
 
-    .alert:hover {
-        transform: scale(1.05);
-    }
+.alert:hover {
+    transform: scale(1.05);
+}
 
 .alert-success {
     background-color: #51FF00;
 }
 
+/* Стили для выбора валюты */
 .currency-choice {
     display: flex;
     flex-direction: column;
@@ -373,6 +395,7 @@ input#submit.btn.btn-primary:hover {
     background-color: #9700BB;
 }
 
+/* Стили для созданных форм пользователей */
 .ur-forms {
     display: flex;
     flex-direction: column;
@@ -436,6 +459,7 @@ input#submit.btn.btn-primary:hover {
     background-color: #9700BB;
 }
 
+/* Стили для блока создания формы */
 .create-content {
     display: flex;
     flex-direction: column;
@@ -499,6 +523,7 @@ form input#arrival_time.form-control {
     font-weight: 600;
 }
 
+/* Анимации */
 @keyframes anim1 {
     from {
         transform: translateY(100px);
